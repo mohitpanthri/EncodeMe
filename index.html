@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ENCODEME</title>
+    <link rel="icon" type="logo" href="/src/images/favicon.ico">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/src/main.css">
+  </head>
+
+  <body>
+
+    <nav class="navbar">
+      <div class="container-fluid logo">
+        <a class="navbar-brand" href="#"><h3>E N C O D E <span> ME</span></h3></a>
+        <a class="github-repo" href="#"><i
+            class="bi bi-github"></i></a>
+      </div>
+    </nav>
+
+    <main class="container-fluid">
+
+      <section class=" container nav-elements">
+        <ul class="nav nav-pills" id="tabs">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="caesar-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#caesar-cipher" type="button" role="tab"
+              aria-controls="caesar-cipher"
+              aria-selected="true">Caesar Cipher</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="vigenere-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#vigenere-cipher" type="button" role="tab"
+              aria-controls="vigenere-cipher"
+              aria-selected="false">Vigenere Cipher</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="playfair-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#playfair-cipher" type="button" role="tab"
+              aria-controls="playfair-cipher"
+              aria-selected="false">Playfair Cipher</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="rail-fence-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#rail-fence-cipher" type="button" role="tab"
+              aria-controls="rail-fence-cipher"
+              aria-selected="false">Rail Fence Cipher</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="transposition-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#transposition-cipher" type="button" role="tab"
+              aria-controls="transposition-cipher"
+              aria-selected="false">Transposition Cipher</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="affine-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#affine-cipher" type="button" role="tab"
+              aria-controls="affine-cipher"
+              aria-selected="false">Affine Cipher</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="multiplicative-cipher-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#multiplicative-cipher" type="button" role="tab"
+              aria-controls="multiplicative-cipher"
+              aria-selected="false">Multiplicative Cipher</button>
+          </li>
+        </ul>
+      </section>
+      <section class="container algorithms">
+        <div id="my-tab-content" class="container tab-content">
+          <!-- Caesar Cipher -->
+          <div class="tab-pane fade show active" id="caesar-cipher">
+            <h1>Caesar Cipher</h1>
+            <div class="mb-3">
+              <label for="caesarText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="caesarText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="caesarShift" class="form-label">Shift by:</label>
+              <input type="number" class="form-control" id="caesarShift"
+                placeholder="Input a number">
+            </div>
+
+            <button type="button" id="caesarEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="caesarDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="caesarOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="caesarOutput" rows="3" readonly></textarea>
+            </div>
+          </div>
+
+          <!-- Vigenere Cipher -->
+          <div class="tab-pane fade" id="vigenere-cipher">
+            <h1>Vigenere Cipher</h1>
+            <div class="mb-3">
+              <label for="vigenereText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="vigenereText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="vigenereKeyword" class="form-label">Enter the key:</label>
+              <input type="text" class="form-control" id="vigenereKeyword"
+                placeholder="Enter the key">
+            </div>
+
+            <button type="button" id="vigenereEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="vigenereDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="vigenereOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="vigenereOutput" rows="3"
+                readonly></textarea>
+            </div>
+          </div>
+
+          <!-- Playfair Cipher -->
+          <div class="tab-pane fade" id="playfair-cipher">
+            <h1>Playfair Cipher</h1>
+            <div class="mb-3">
+              <label for="playfairText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="playfairText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="playfairKeyword" class="form-label">Enter the key:</label>
+              <input type="text" class="form-control" id="playfairKeyword"
+                placeholder="Enter the key">
+            </div>
+
+            <button type="button" id="playfairEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="playfairDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="playfairOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="playfairOutput" rows="3"
+                readonly></textarea>
+            </div>
+          </div>
+
+          <!-- Rail Fence Cipher -->
+          <div class="tab-pane fade" id="rail-fence-cipher">
+            <h1>Rail Fence Cipher</h1>
+            <div class="mb-3">
+              <label for="railFenceText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="railFenceText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="railFenceRails" class="form-label">Number of Rails:</label>
+              <input type="number" class="form-control" id="railFenceRails"
+                placeholder="Input a number">
+            </div>
+
+            <button type="button" id="railFenceEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="railFenceDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="railFenceOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="railFenceOutput" rows="3"
+                readonly></textarea>
+            </div>
+          </div>
+
+          <!-- Transposition Cipher -->
+          <div class="tab-pane fade" id="transposition-cipher">
+            <h1>Transposition Cipher</h1>
+            <div class="mb-3">
+              <label for="transpositionText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="transpositionText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="transpositionKeyword" class="form-label">Enter the
+                key:</label>
+              <input type="text" class="form-control" id="transpositionKeyword"
+                placeholder="Enter the key">
+            </div>
+
+            <button type="button" id="transpositionEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="transpositionDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="transpositionOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="transpositionOutput" rows="3"
+                readonly></textarea>
+            </div>
+          </div>
+
+          <!-- Affine Cipher -->
+          <div class="tab-pane fade" id="affine-cipher">
+            <h1>Affine Cipher</h1>
+            <div class="mb-3">
+              <label for="affineText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="affineText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="affineA" class="form-label">Enter Key-1 value:</label>
+              <input type="number" class="form-control" id="affineA"
+                placeholder="Input a number">
+            </div>
+
+            <div class="mb-3">
+              <label for="affineB" class="form-label">Enter Key-2 value:</label>
+              <input type="number" class="form-control" id="affineB"
+                placeholder="Input a number">
+            </div>
+
+            <button type="button" id="affineEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="affineDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="affineOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="affineOutput" rows="3" readonly></textarea>
+            </div>
+          </div>
+
+          <!-- Multiplicative Cipher -->
+          <div class="tab-pane fade" id="multiplicative-cipher">
+            <h1>Multiplicative Cipher</h1>
+            <div class="mb-3">
+              <label for="multiplicativeText" class="form-label">Enter
+                Plaintext/Ciphertext:</label>
+              <textarea class="form-control" id="multiplicativeText" rows="3"
+                placeholder="Enter the text you want to Encrypt or Decrypt"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="multiplicativeKey" class="form-label">Enter the key:</label>
+              <input type="number" class="form-control" id="multiplicativeKey"
+                placeholder="Input a number">
+            </div>
+
+            <button type="button" id="multiplicativeEncryptBtn"
+              class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="multiplicativeDecryptBtn"
+              class="btn btn-primary btn-sm">Decrypt</button>
+
+            <div class="mb-3">
+              <label for="multiplicativeOutput" class="form-label">Result:</label>
+              <textarea class="form-control" id="multiplicativeOutput" rows="3"
+                readonly></textarea>
+            </div>
+          </div>
+
+          <!-- End -->
+        </div>
+      </section>
+      <footer>
+        <p>Mohit Panthri 2023</p>
+      </footer>
+    </main>
+
+    <script src="/src/scripts/caesar.js" type="module"></script>
+    <script src="/src/scripts/vigenere.js" type="module"></script>
+    <script src="/src/scripts/playfair.js" type="module"></script>
+    <script src="/src/scripts/railfence.js" type="module"></script>
+    <script src="/src/scripts/transposition.js" type="module"></script>
+    <script src></script>
+    <script src></script>
+    <script src="/src/main.js" type="module"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"></script>
+
+  </body>
+
+</html>
