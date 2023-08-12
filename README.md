@@ -19,7 +19,10 @@ This website is fully responsive so that you can use it in any device.
 
 ![ENCODE-ME](https://github.com/mohitpanthri/EncodeMe/assets/99413629/8f984ba2-b357-4ca3-865b-7fbdecd35101)
 
-https://github.com/mohitpanthri/EncodeMe/assets/99413629/b1e2e532-ef51-4ce4-a835-68a6e551106f
+
+https://github.com/mohitpanthri/EncodeMe/assets/99413629/4f3669aa-58ed-442a-9f9b-e2e6921357f7
+
+
 
 <hr>
 
