@@ -10,8 +10,8 @@ This website is fully responsive so that you can use it in any device.
 
 <div align="center"> 
 
-## Watch the Live [Demo](https://encodeme.netlify.app/)  
-<sup>**Status:**</sup>  [![Netlify Status](https://api.netlify.com/api/v1/badges/1a237f2f-9601-4cf7-a1f7-baf667d32663/deploy-status)](https://app.netlify.com/sites/stegify/deploys)
+## Watch the Live [Demo](https://encode-me.netlify.app/)  
+<sup>**Status:**</sup>  [![Netlify Status](https://api.netlify.com/api/v1/badges/b0412e6c-5e5e-4d10-a89e-0ac5014dc1f7/deploy-status)](https://app.netlify.com/sites/encode-me/deploys)
 </div> 
 
 
