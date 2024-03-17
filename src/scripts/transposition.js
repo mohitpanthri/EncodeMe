@@ -1,80 +1,94 @@
 // Function to perform Transposition Cipher encryption
-function transpositionEncrypt(text, key) {
-  const keyLength = key.length;
-  const textLength = text.length;
-  const rows = Math.ceil(textLength / keyLength);
-  const matrix = new Array(rows)
-    .fill("")
-    .map(() => new Array(keyLength).fill(""));
+function transpositionEncrypt(plainText, key) {
+  let cipherText = "";
 
-  // Fill the matrix with the plaintext
-  let textIndex = 0;
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < keyLength; j++) {
-      if (textIndex < textLength) {
-        matrix[i][j] = text[textIndex];
-        textIndex++;
-      }
-    }
+  // Track key indices for column arrangement
+  let keyIndex = 0;
+
+  // Calculate the length of the plaintext
+  const textLength = plainText.length;
+
+  // Convert the plaintext and key into arrays
+  const textArray = Array.from(plainText);
+  const sortedKey = Array.from(key).sort();
+
+  // Calculate the number of columns in the matrix
+  const columns = key.length;
+
+  // Calculate the maximum number of rows in the matrix
+  const rows = Math.ceil(textLength / columns);
+
+  // Create a matrix and insert the message and padding characters row-wise
+  const matrix = [];
+  for (let i = 0; i < textArray.length; i += columns) {
+    matrix.push(textArray.slice(i, i + columns));
   }
 
-  // Sort the columns based on the order of characters in the key
-  const sortedKey = key.split("").sort();
-  const keyOrder = key.split("").map((char) => sortedKey.indexOf(char));
-  const encryptedTextArr = [];
-
-  for (let i = 0; i < keyLength; i++) {
-    const col = keyOrder.indexOf(i);
-    for (let j = 0; j < rows; j++) {
-      encryptedTextArr.push(matrix[j][col]);
+  // Read the matrix column-wise using the sorted key
+  for (let i = 0; i < columns; i++) {
+    const currentKeyIndex = key.indexOf(sortedKey[keyIndex]);
+    for (const row of matrix) {
+      cipherText += row[currentKeyIndex];
     }
+    keyIndex++;
   }
 
-  return encryptedTextArr.join("");
+  return cipherText;
 }
 
 // Function to perform Transposition Cipher decryption
-function transpositionDecrypt(text, key) {
-  const keyLength = key.length;
-  const textLength = text.length;
-  const rows = Math.ceil(textLength / keyLength);
-  const matrix = new Array(rows)
-    .fill("")
-    .map(() => new Array(keyLength).fill(""));
-  const colsInLastRow = textLength % keyLength || keyLength;
-  const emptyCells = rows * keyLength - textLength;
+function transpositionDecrypt(cipherText, key) {
+  let decryptedMessage = ""; // Initialize variable to store the decrypted message
 
-  // Arrange the columns based on the key order
-  const keyOrder = key
-    .split("")
-    .map((char, index) => [char, index])
-    .sort((a, b) => a[0].localeCompare(b[0]))
-    .map((item) => item[1]);
+  // Track key indices for column arrangement
+  let keyIndex = 0;
 
-  let textIndex = 0;
-  for (let i = 0; i < keyLength; i++) {
-    const col = keyOrder.indexOf(i);
-    for (let j = 0; j < rows; j++) {
-      if ((j === rows - 1 && col >= colsInLastRow) || textIndex >= textLength) {
-        // Skip filling cells in the last row if they are empty
-        continue;
-      }
+  // Track decrypted message indices
+  let messageIndex = 0;
 
-      matrix[j][col] = text[textIndex];
-      textIndex++;
-    }
-  }
+  // Calculate the length of the ciphertext
+  const messageLength = cipherText.length;
 
-  // Read the plaintext from the matrix
-  const decryptedTextArr = [];
+  // Convert the ciphertext into an array
+  const messageArray = Array.from(cipherText);
+
+  // Calculate the number of columns in the matrix
+  const columns = key.length;
+
+  // Calculate the maximum number of rows in the matrix
+  const rows = Math.ceil(messageLength / columns);
+
+  // Convert the key into a sorted list for alphabetical access
+  const sortedKey = Array.from(key).sort();
+
+  // Create an empty matrix to store the deciphered message
+  const decryptedMatrix = [];
   for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < keyLength; j++) {
-      decryptedTextArr.push(matrix[i][j]);
-    }
+    decryptedMatrix.push(Array(columns).fill(null));
   }
 
-  return decryptedTextArr.join("");
+  // Arrange the matrix column-wise according to permutation order
+  // by adding into a new matrix
+  for (let i = 0; i < columns; i++) {
+    const currentKeyIndex = key.indexOf(sortedKey[keyIndex]);
+
+    for (let j = 0; j < rows; j++) {
+      decryptedMatrix[j][currentKeyIndex] = messageArray[messageIndex];
+      messageIndex++;
+    }
+    keyIndex++;
+  }
+
+  // Convert the decrypted message matrix into a string
+  try {
+    decryptedMessage = decryptedMatrix.flat().join("");
+  } catch (err) {
+    throw new Error("This program cannot handle repeating words.");
+  }
+
+  return decryptedMessage;
 }
+
 
 // Exporting the functions
 export { transpositionEncrypt, transpositionDecrypt };
