@@ -18,10 +18,20 @@ function transpositionEncrypt(plainText, key) {
   // Calculate the maximum number of rows in the matrix
   const rows = Math.ceil(textLength / columns);
 
-  // Create a matrix and insert the message and padding characters row-wise
+  // Create a matrix and insert the message row-wise
   const matrix = [];
-  for (let i = 0; i < textArray.length; i += columns) {
-    matrix.push(textArray.slice(i, i + columns));
+  let currentIndex = 0;
+  for (let i = 0; i < rows; i++) {
+    const row = [];
+    for (let j = 0; j < columns; j++) {
+      if (currentIndex < textArray.length) {
+        row.push(textArray[currentIndex]);
+        currentIndex++;
+      } else {
+        row.push(""); // Replace empty spaces with empty string
+      }
+    }
+    matrix.push(row);
   }
 
   // Read the matrix column-wise using the sorted key
