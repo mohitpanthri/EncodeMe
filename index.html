@@ -6,24 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ENCODEME</title>
     <link rel="icon" type="logo" href="/src/images/favicon.ico">
-    <link
-      href="/src/bootstrap/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous">
-    <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/src/main.css">
+    <link href="./src/bootstrap/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./src/main.css">
   </head>
 
   <body>
-    
+
     <!-- Navbar -->
     <nav class="navbar">
       <div class="container-fluid logo">
-        <a class="navbar-brand" href="https://github.com/mohitpanthri/EncodeMe"><h3>E N C O D E <span> ME</span></h3></a>
-        <a class="github-repo" href="https://github.com/mohitpanthri/EncodeMe"><i
-            class="bi bi-github"></i></a>
+        <a class="navbar-brand" href="https://github.com/mohitpanthri/EncodeMe">
+          <h3>E N C O D E <span> ME</span></h3>
+        </a>
+        <a class="github-repo" href="https://github.com/mohitpanthri/EncodeMe"><i class="bi bi-github"></i></a>
       </div>
     </nav>
 
@@ -33,57 +30,39 @@
       <section class=" container nav-elements">
         <ul class="nav nav-pills" id="tabs">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="caesar-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#caesar-cipher" type="button" role="tab"
-              aria-controls="caesar-cipher"
-              aria-selected="true">Caesar Cipher</button>
+            <button class="nav-link active" id="caesar-cipher-tab" data-bs-toggle="pill" data-bs-target="#caesar-cipher"
+              type="button" role="tab" aria-controls="caesar-cipher" aria-selected="true">Caesar Cipher</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="vigenere-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#vigenere-cipher" type="button" role="tab"
-              aria-controls="vigenere-cipher"
-              aria-selected="false">Vigenere Cipher</button>
+            <button class="nav-link" id="vigenere-cipher-tab" data-bs-toggle="pill" data-bs-target="#vigenere-cipher"
+              type="button" role="tab" aria-controls="vigenere-cipher" aria-selected="false">Vigenere Cipher</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="playfair-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#playfair-cipher" type="button" role="tab"
-              aria-controls="playfair-cipher"
-              aria-selected="false">Playfair Cipher</button>
+            <button class="nav-link" id="playfair-cipher-tab" data-bs-toggle="pill" data-bs-target="#playfair-cipher"
+              type="button" role="tab" aria-controls="playfair-cipher" aria-selected="false">Playfair Cipher</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="rail-fence-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#rail-fence-cipher" type="button" role="tab"
-              aria-controls="rail-fence-cipher"
+            <button class="nav-link" id="rail-fence-cipher-tab" data-bs-toggle="pill"
+              data-bs-target="#rail-fence-cipher" type="button" role="tab" aria-controls="rail-fence-cipher"
               aria-selected="false">Rail Fence Cipher</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="transposition-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#transposition-cipher" type="button" role="tab"
-              aria-controls="transposition-cipher"
+            <button class="nav-link" id="transposition-cipher-tab" data-bs-toggle="pill"
+              data-bs-target="#transposition-cipher" type="button" role="tab" aria-controls="transposition-cipher"
               aria-selected="false">Transposition Cipher</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="affine-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#affine-cipher" type="button" role="tab"
-              aria-controls="affine-cipher"
-              aria-selected="false">Affine Cipher</button>
+            <button class="nav-link" id="affine-cipher-tab" data-bs-toggle="pill" data-bs-target="#affine-cipher"
+              type="button" role="tab" aria-controls="affine-cipher" aria-selected="false">Affine Cipher</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="multiplicative-cipher-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#multiplicative-cipher" type="button" role="tab"
-              aria-controls="multiplicative-cipher"
+            <button class="nav-link" id="multiplicative-cipher-tab" data-bs-toggle="pill"
+              data-bs-target="#multiplicative-cipher" type="button" role="tab" aria-controls="multiplicative-cipher"
               aria-selected="false">Multiplicative Cipher</button>
           </li>
         </ul>
       </section>
-      
+
       <section class="container algorithms">
         <div id="my-tab-content" class="container tab-content">
           <!-- Caesar Cipher -->
@@ -98,14 +77,11 @@
 
             <div class="mb-3">
               <label for="caesarShift" class="form-label">Shift by:</label>
-              <input type="number" class="form-control" id="caesarShift"
-                placeholder="Input a number">
+              <input type="number" class="form-control" id="caesarShift" placeholder="Input a number">
             </div>
 
-            <button type="button" id="caesarEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="caesarDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="caesarEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="caesarDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="caesarOutput" class="form-label">Result:</label>
@@ -125,19 +101,15 @@
 
             <div class="mb-3">
               <label for="vigenereKeyword" class="form-label">Enter the key:</label>
-              <input type="text" class="form-control" id="vigenereKeyword"
-                placeholder="Enter the key">
+              <input type="text" class="form-control" id="vigenereKeyword" placeholder="Enter the key">
             </div>
 
-            <button type="button" id="vigenereEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="vigenereDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="vigenereEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="vigenereDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="vigenereOutput" class="form-label">Result:</label>
-              <textarea class="form-control" id="vigenereOutput" rows="3"
-                readonly></textarea>
+              <textarea class="form-control" id="vigenereOutput" rows="3" readonly></textarea>
             </div>
           </div>
 
@@ -153,19 +125,15 @@
 
             <div class="mb-3">
               <label for="playfairKeyword" class="form-label">Enter the key:</label>
-              <input type="text" class="form-control" id="playfairKeyword"
-                placeholder="Enter the key">
+              <input type="text" class="form-control" id="playfairKeyword" placeholder="Enter the key">
             </div>
 
-            <button type="button" id="playfairEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="playfairDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="playfairEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="playfairDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="playfairOutput" class="form-label">Result:</label>
-              <textarea class="form-control" id="playfairOutput" rows="3"
-                readonly></textarea>
+              <textarea class="form-control" id="playfairOutput" rows="3" readonly></textarea>
             </div>
           </div>
 
@@ -181,19 +149,15 @@
 
             <div class="mb-3">
               <label for="railFenceRails" class="form-label">Number of Rails:</label>
-              <input type="number" class="form-control" id="railFenceRails"
-                placeholder="Input a number">
+              <input type="number" class="form-control" id="railFenceRails" placeholder="Input a number">
             </div>
 
-            <button type="button" id="railFenceEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="railFenceDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="railFenceEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="railFenceDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="railFenceOutput" class="form-label">Result:</label>
-              <textarea class="form-control" id="railFenceOutput" rows="3"
-                readonly></textarea>
+              <textarea class="form-control" id="railFenceOutput" rows="3" readonly></textarea>
             </div>
           </div>
 
@@ -210,19 +174,15 @@
             <div class="mb-3">
               <label for="transpositionKeyword" class="form-label">Enter the
                 key:</label>
-              <input type="text" class="form-control" id="transpositionKeyword"
-                placeholder="Enter the key">
+              <input type="text" class="form-control" id="transpositionKeyword" placeholder="Enter the key">
             </div>
 
-            <button type="button" id="transpositionEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="transpositionDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="transpositionEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="transpositionDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="transpositionOutput" class="form-label">Result:</label>
-              <textarea class="form-control" id="transpositionOutput" rows="3"
-                readonly></textarea>
+              <textarea class="form-control" id="transpositionOutput" rows="3" readonly></textarea>
             </div>
           </div>
 
@@ -238,20 +198,16 @@
 
             <div class="mb-3">
               <label for="affineA" class="form-label">Enter Key-1 value:</label>
-              <input type="number" class="form-control" id="affineA"
-                placeholder="Input a number">
+              <input type="number" class="form-control" id="affineA" placeholder="Input a number">
             </div>
 
             <div class="mb-3">
               <label for="affineB" class="form-label">Enter Key-2 value:</label>
-              <input type="number" class="form-control" id="affineB"
-                placeholder="Input a number">
+              <input type="number" class="form-control" id="affineB" placeholder="Input a number">
             </div>
 
-            <button type="button" id="affineEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="affineDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="affineEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="affineDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="affineOutput" class="form-label">Result:</label>
@@ -271,19 +227,15 @@
 
             <div class="mb-3">
               <label for="multiplicativeKey" class="form-label">Enter the key:</label>
-              <input type="number" class="form-control" id="multiplicativeKey"
-                placeholder="Input a number">
+              <input type="number" class="form-control" id="multiplicativeKey" placeholder="Input a number">
             </div>
 
-            <button type="button" id="multiplicativeEncryptBtn"
-              class="btn btn-primary btn-sm">Encrypt</button>
-            <button type="button" id="multiplicativeDecryptBtn"
-              class="btn btn-primary btn-sm">Decrypt</button>
+            <button type="button" id="multiplicativeEncryptBtn" class="btn btn-primary btn-sm">Encrypt</button>
+            <button type="button" id="multiplicativeDecryptBtn" class="btn btn-primary btn-sm">Decrypt</button>
 
             <div class="mb-3">
               <label for="multiplicativeOutput" class="form-label">Result:</label>
-              <textarea class="form-control" id="multiplicativeOutput" rows="3"
-                readonly></textarea>
+              <textarea class="form-control" id="multiplicativeOutput" rows="3" readonly></textarea>
             </div>
           </div>
 
@@ -295,20 +247,10 @@
       </footer>
     </main>
 
-    <script src="/src/scripts/caesar.js" type="module"></script>
-    <script src="/src/scripts/vigenere.js" type="module"></script>
-    <script src="/src/scripts/playfair.js" type="module"></script>
-    <script src="/src/scripts/railfence.js" type="module"></script>
-    <script src="/src/scripts/transposition.js" type="module"></script>
-    <script src></script>
-    <script src></script>
-    <script src="/src/main.js" type="module"></script>
-
-    <script
-      src="/src/bootstrap/bootstrap.bundle.min.js"
+    <script src="./src/bootstrap/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"></script>
-
+    <script src="./src/main.js" type="module"></script>
   </body>
 
 </html>

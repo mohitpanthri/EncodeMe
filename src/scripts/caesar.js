@@ -1,27 +1,27 @@
-export function caesarEncrypt(text, shift) {
+// Function to perform caesar encryption
+export const caesarEncrypt = (text, shift) => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const textLength = text.length;
-  let encryptedText = "";
+  const modValue = alphabet.length;
+  const encryptedChars = [];
 
-  for (let i = 0; i < textLength; i++) {
-    const char = text[i];
+  for (let char of text) {
     if (char === " ") {
-      encryptedText += " ";
+      encryptedChars.push(" ");
       continue;
     }
 
     const charIndex = alphabet.indexOf(char);
     if (charIndex === -1) {
-      encryptedText += char;
+      encryptedChars.push(char);
       continue;
     }
 
-    const newIndex = (charIndex + shift + 26) % 26;
-    encryptedText += alphabet[newIndex];
+    const newIndex = (charIndex + shift + modValue) % modValue;
+    encryptedChars.push(alphabet[newIndex]);
   }
 
-  return encryptedText;
-}
+  return encryptedChars.join("");
+};
 
 // Exporting the functions
 export function caesarDecrypt(text, shift) {

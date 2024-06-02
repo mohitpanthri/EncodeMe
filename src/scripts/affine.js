@@ -53,13 +53,26 @@ function affineDecrypt(text, key1, key2) {
 }
 
 // Function to calculate the modular inverse
-function modInverse(key1, m) {
-  for (let x = 1; x < m; x++) {
-    if ((key1 * x) % m === 1) {
-      return x;
-    }
+function modInverse(a, m) {
+  let [x, y, gcd] = extendedEuclidean(a, m);
+  if (gcd !== 1) {
+    return null; // Modular inverse does not exist
+  } else {
+    x = ((x % m) + m) % m; // Ensure x is positive
+    return x;
   }
-  return -1; // Return -1 if modular inverse doesn't exist
+}
+
+// Function to perform extended euclidean algorithm
+function extendedEuclidean(a, b) {
+  if (b === 0) {
+    return [1, 0, a];
+  }
+
+  const [x1, y1, gcd] = extendedEuclidean(b, a % b);
+  const x = y1;
+  const y = x1 - Math.floor(a / b) * y1;
+  return [x, y, gcd];
 }
 
 // Exporting the functions

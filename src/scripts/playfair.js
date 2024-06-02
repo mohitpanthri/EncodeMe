@@ -4,9 +4,9 @@ function generateKeySquare(keyword) {
   const uniqueChars = [];
   const keySquare = [];
 
-  // Remove duplicate characters from the keyword
-  for (const char of keyword) {
-    if (!uniqueChars.includes(char)) {
+  // Remove duplicate characters from the keyword and handle "I" and "J" as the same letter
+  for (const char of keyword.toUpperCase()) {
+    if (!uniqueChars.includes(char) && char !== "J") {
       uniqueChars.push(char);
     }
   }
@@ -25,19 +25,36 @@ function generateKeySquare(keyword) {
   return keySquare;
 }
 
+// Function to handle repeated letters by inserting a filler letter
+function modifyText(plaintext) {
+  let modifiedText = "";
+  for (let i = 0; i < plaintext.length; i += 2) {
+    let pair = plaintext.slice(i, i + 2);
+    if (pair.length === 2 && pair[0] === pair[1]) {
+      modifiedText += pair[0] + "X" + pair[1];
+    } else {
+      modifiedText += pair;
+    }
+  }
+
+  if (modifiedText.length % 2 !== 0) {
+    modifiedText += "X";
+  }
+
+  return modifiedText;
+}
+
 // Function to perform Playfair encryption
 function playfairEncrypt(text, keyword) {
   const keySquare = generateKeySquare(keyword);
-  const textLength = text.length;
   let encryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
 
-  // Handling odd-length text by adding a placeholder character
-  if (textLength % 2 !== 0) {
-    text += "X";
-  }
+  // Replacing any J in the text with I
+  let replaceJ = text.replace(/J/g, "I");
+  text = modifyText(replaceJ);
 
-  for (let i = 0; i < textLength; i += 2) {
+  for (let i = 0; i < text.length; i += 2) {
     pos1 = keySquare.indexOf(text[i]);
     pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
@@ -68,16 +85,13 @@ function playfairEncrypt(text, keyword) {
 // Function to perform Playfair decryption
 function playfairDecrypt(text, keyword) {
   const keySquare = generateKeySquare(keyword);
-  const textLength = text.length;
   let decryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
 
-  // Handling odd-length text by adding a placeholder character
-  if (textLength % 2 !== 0) {
-    text += "X";
-  }
+  // Replacing any J in the text with I
+  text = text.replace(/J/g, "I");
 
-  for (let i = 0; i < textLength; i += 2) {
+  for (let i = 0; i < text.length; i += 2) {
     pos1 = keySquare.indexOf(text[i]);
     pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
