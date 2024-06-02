@@ -1,11 +1,14 @@
-function vigenereEncrypt(text, keyword) {
+// Function to perform vigenere Cipher encryption
+function vigenereEncrypt(plainText, keyword) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const textLength = text.length;
+  plainText = plainText.toUpperCase().replace(/\s/g, "");
+  keyword = keyword.toUpperCase().replace(/\s/g, "");
+  const textLength = plainText.length;
   const keywordLength = keyword.length;
   let encryptedText = "";
 
   for (let i = 0; i < textLength; i++) {
-    const char = text[i];
+    const char = plainText[i];
     if (char === " ") {
       encryptedText += " ";
       continue;
@@ -28,14 +31,18 @@ function vigenereEncrypt(text, keyword) {
   return encryptedText;
 }
 
-function vigenereDecrypt(text, keyword) {
+// Function to perform vigenere Cipher decryption
+function vigenereDecrypt(cipherText, keyword) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const textLength = text.length;
+  cipherText = cipherText.toUpperCase().replace(/\s/g, "");
+  keyword = keyword.toUpperCase().replace(/\s/g, "");
+  const textLength = cipherText.length;
   const keywordLength = keyword.length;
   let decryptedText = "";
+  // let i = 0;
 
   for (let i = 0; i < textLength; i++) {
-    const char = text[i];
+    const char = cipherText[i];
     if (char === " ") {
       decryptedText += " ";
       continue;

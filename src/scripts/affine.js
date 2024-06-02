@@ -1,6 +1,7 @@
 // Function to perform Affine Cipher encryption
 function affineEncrypt(text, key1, key2) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  text = text.toUpperCase().replace(/\s/g, "");
   const textLength = text.length;
   let encryptedText = "";
 
@@ -27,6 +28,7 @@ function affineEncrypt(text, key1, key2) {
 // Function to perform Affine Cipher decryption
 function affineDecrypt(text, key1, key2) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  text = text.toUpperCase().replace(/\s/g, "");
   const textLength = text.length;
   const modInverseA = modInverse(key1, 26); // Calculate the modular inverse of 'a'
 

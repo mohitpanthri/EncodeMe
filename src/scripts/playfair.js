@@ -46,12 +46,13 @@ function modifyText(plaintext) {
 
 // Function to perform Playfair encryption
 function playfairEncrypt(text, keyword) {
+  keyword = keyword.toUpperCase().replace(/\s/g, "");
   const keySquare = generateKeySquare(keyword);
   let encryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
 
   // Replacing any J in the text with I
-  let replaceJ = text.replace(/J/g, "I");
+  let replaceJ = text.toUpperCase().replace(/\s/g, "").replace(/J/g, "I");
   text = modifyText(replaceJ);
 
   for (let i = 0; i < text.length; i += 2) {
@@ -84,12 +85,13 @@ function playfairEncrypt(text, keyword) {
 
 // Function to perform Playfair decryption
 function playfairDecrypt(text, keyword) {
+  keyword = keyword.toUpperCase().replace(/\s/g, "");
   const keySquare = generateKeySquare(keyword);
   let decryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
 
   // Replacing any J in the text with I
-  text = text.replace(/J/g, "I");
+  text = text.toUpperCase().replace(/\s/g, "").replace(/J/g, "I");
 
   for (let i = 0; i < text.length; i += 2) {
     pos1 = keySquare.indexOf(text[i]);

@@ -2,6 +2,9 @@
 function transpositionEncrypt(plainText, key) {
   let cipherText = "";
 
+  plainText = plainText.toUpperCase().replace(/\s/g, "");
+  key = removeRepeatedCharacters(key).toUpperCase().replace(/\s/g, "");
+
   // Track key indices for column arrangement
   let keyIndex = 0;
 
@@ -28,7 +31,7 @@ function transpositionEncrypt(plainText, key) {
         row.push(textArray[currentIndex]);
         currentIndex++;
       } else {
-        row.push(""); // Replace empty spaces with empty string
+        row.push("X"); // Replace empty spaces with empty string
       }
     }
     matrix.push(row);
@@ -49,6 +52,9 @@ function transpositionEncrypt(plainText, key) {
 // Function to perform Transposition Cipher decryption
 function transpositionDecrypt(cipherText, key) {
   let decryptedMessage = ""; // Initialize variable to store the decrypted message
+
+  cipherText = cipherText.toUpperCase().replace(/\s/g, "");
+  key = removeRepeatedCharacters(key).toUpperCase().replace(/\s/g, "");
 
   // Track key indices for column arrangement
   let keyIndex = 0;
@@ -99,6 +105,28 @@ function transpositionDecrypt(cipherText, key) {
   return decryptedMessage;
 }
 
+// Function to remove any duplicates from the key
+function removeRepeatedCharacters(inputString) {
+  // Create a Set to store unique characters
+  const uniqueChars = new Set();
+
+  // Use Array.from to convert the string into an array of characters
+  const charsArray = Array.from(inputString);
+
+  // Filter out repeated characters by adding them to the Set
+  const filteredChars = charsArray.filter((char) => {
+    if (!uniqueChars.has(char)) {
+      uniqueChars.add(char);
+      return true;
+    }
+    return false;
+  });
+
+  // Join the filtered characters back into a string
+  const resultString = filteredChars.join("");
+
+  return resultString;
+}
 
 // Exporting the functions
 export { transpositionEncrypt, transpositionDecrypt };

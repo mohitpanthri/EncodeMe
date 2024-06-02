@@ -1,5 +1,6 @@
 // Function to perform caesar encryption
 export const caesarEncrypt = (text, shift) => {
+  text = text.toUpperCase().replace(/\s/g, "");
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const modValue = alphabet.length;
   const encryptedChars = [];

@@ -1,35 +1,37 @@
+// Function to perform railfence Cipher encryption
 function railFenceEncrypt(text, rails) {
-  if (rails < 2) {
-    throw new Error("Number of rails must be at least 2.");
+  text = text.toUpperCase().replace(/\s/g, "");
+  let i = 0,
+    j = 0,
+    l,
+    counter = 0;
+  let flag = "down";
+
+  l = text.length;
+  let railMatrix = [];
+  for (i = 0; i < rails; i++) {
+    railMatrix[i] = [];
+    for (j = 0; j < l; j++) railMatrix[i][j] = " ";
   }
+  i = 0;
+  j = 0;
+  while (counter < l) {
+    railMatrix[i][j] = text[counter];
+    counter++;
+    j++;
 
-  const textLength = text.length;
-  const railMatrix = new Array(rails)
-    .fill("")
-    .map(() => new Array(textLength).fill(""));
-  let currentRail = 0;
-  let direction = 1;
-
-  for (let i = 0; i < textLength; i++) {
-    railMatrix[currentRail][i] = text[i];
-
-    if (currentRail === 0) {
-      direction = 1;
-    } else if (currentRail === rails - 1) {
-      direction = -1;
-    }
-
-    currentRail += direction;
+    if (i == rails - 1) flag = "up";
+    if (i == 0) flag = "down";
+    if (flag == "down") i++;
+    if (flag == "up") i--;
   }
-
-  return railMatrix.flat().join("");
+  table(railMatrix, rails, l);
+  return railMatrix.flat().join("").replace(/ /g, "");
 }
 
+// Function to perform railfence Cipher decryption
 function railFenceDecrypt(text, rails) {
-  if (rails < 2) {
-    throw new Error("Number of rails must be at least 2.");
-  }
-
+  text = text.toUpperCase().replace(/\s/g, "");
   const textLength = text.length;
   const railMatrix = new Array(rails)
     .fill("")
@@ -73,7 +75,8 @@ function railFenceDecrypt(text, rails) {
 
     currentRail += direction;
   }
-
+  console.log(railMatrix);
+  table(railMatrix, rails, textLength);
   return decryptedText;
 }
 
